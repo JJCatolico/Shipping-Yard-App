@@ -6,7 +6,6 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.string :destination
       t.float :cost
       t.integer :containers
-      t.integer :ship_id
       t.integer :user_id
 
       t.timestamps

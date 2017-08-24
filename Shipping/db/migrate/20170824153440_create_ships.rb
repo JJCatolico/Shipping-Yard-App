@@ -5,8 +5,7 @@ class CreateShips < ActiveRecord::Migration[5.1]
       t.string :location
       t.string :name
       t.string :user_id
-      t.string :job_id
-      
+
       t.timestamps
     end
   end

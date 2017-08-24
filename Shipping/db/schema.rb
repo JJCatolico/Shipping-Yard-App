@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824153821) do
+ActiveRecord::Schema.define(version: 20170824181401) do
 
   create_table "jobs", force: :cascade do |t|
     t.text "description"
@@ -18,10 +18,16 @@ ActiveRecord::Schema.define(version: 20170824153821) do
     t.string "destination"
     t.float "cost"
     t.integer "containers"
-    t.integer "ship_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs_ships", id: false, force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "ship_id", null: false
+    t.index ["job_id", "ship_id"], name: "index_jobs_ships_on_job_id_and_ship_id"
+    t.index ["ship_id", "job_id"], name: "index_jobs_ships_on_ship_id_and_job_id"
   end
 
   create_table "ships", force: :cascade do |t|
@@ -29,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170824153821) do
     t.string "location"
     t.string "name"
     t.string "user_id"
-    t.string "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
